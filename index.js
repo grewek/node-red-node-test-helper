@@ -95,7 +95,7 @@ class NodeTestHelper extends EventEmitter {
     constructor() {
         super();
 
-        this._sandbox = sinon.createSandbox();
+        //this._sandbox = sandbox;
 
         this._address = '127.0.0.1';
         this._listenPort = 0; // ephemeral
@@ -194,6 +194,7 @@ class NodeTestHelper extends EventEmitter {
 
     async load(testNode, testFlow, testCredentials, cb) {
         const log = this._log;
+        /*
         const logSpy = this._logSpy = this._sandbox.spy(log, 'log');
         logSpy.FATAL = log.FATAL;
         logSpy.ERROR = log.ERROR;
@@ -215,7 +216,7 @@ class NodeTestHelper extends EventEmitter {
                     return retval;
                 }
             });
-        });
+        });*/
 
 
         if (typeof testCredentials === 'function') {
@@ -329,8 +330,8 @@ class NodeTestHelper extends EventEmitter {
     unload() {
         // TODO: any other state to remove between tests?
         this._redNodes.clearRegistry();
-        this._logSpy && this._logSpy.restore();
-        this._sandbox.restore();
+        //this._logSpy && this._logSpy.restore();
+        //this._sandbox.restore();
 
         // internal API
         this._context.clean({allNodes:[]});
